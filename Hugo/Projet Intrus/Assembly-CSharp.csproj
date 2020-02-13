@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Examples\XInputTestCS.cs" />
+    <Compile Include="Assets\Project\Scripts\Environement\Doors.cs" />
+    <Compile Include="Assets\Project\Scripts\Environement\IInteractable.cs" />
+    <Compile Include="Assets\Project\Scripts\Environement\TriggerDoors.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\AmmoKit.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\AmmoStack.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\Kit.cs" />
@@ -83,6 +86,8 @@
     <Compile Include="Assets\Project\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Project\Scripts\Managers\WaveManager.cs" />
     <Compile Include="Assets\Project\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Project\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\Project\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\DynamicBehaviour.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\IDamageable.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\IDamager.cs" />
@@ -90,9 +95,11 @@
     <Compile Include="Assets\Project\Scripts\Tools\IUsable.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\IUser.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\MonoSingleton.cs" />
+    <Compile Include="Assets\door.cs" />
     <None Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Docs.txt" />
     <None Include="Assets\Project\Imported Packages\Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
     <None Include="Assets\Project\Imported Packages\Assets\PolygonZombies\Shaders\POLYGON_Zombies.shader" />
+    <None Include="Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Standard Diffuse Bump.shader" />
     <None Include="Assets\Project\Imported Packages\Assets\SimpleApocalypseInteriors\_Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\Project\Imported Packages\Tools\XInputDotNet\MITLicense.txt" />
     <Reference Include="Unity.Timeline.Editor">
