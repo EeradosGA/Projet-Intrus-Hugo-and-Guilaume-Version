@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Tools;
 using UnityEngine.SceneManagement;
+using ProjectIntrus.Tools;
 
-public class GameManager : Singleton<GameManager>
+
+public class GameManager : MonoSingleton<GameManager>
 {
+
+
     public enum SceneName 
     {
         MENU,
@@ -30,6 +33,8 @@ public class GameManager : Singleton<GameManager>
             this.LoadScene(SceneName.GAME);
         if (Input.GetKeyDown(KeyCode.M))
             this.LoadScene(SceneName.MENU);
+
+
     }
 
     public void LoadScene(SceneName pSceneName)

@@ -64,10 +64,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Examples\XInputTestCS.cs" />
-    <Compile Include="Assets\Project\Menu\MainMenuManager.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Gun.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Weapons\SMG.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Shotgun.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Sniper.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Weapons.cs" />
+    <Compile Include="Assets\Project\Scripts\ITakeDmg.cs" />
     <Compile Include="Assets\Project\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Project\Scripts\Menu\MainMenuManager.cs" />
+    <Compile Include="Assets\Project\Scripts\Menu\SelectWeapon.cs" />
     <Compile Include="Assets\Project\Scripts\ToCall.cs" />
-    <Compile Include="Assets\Project\Scripts\Tools\Singleton.cs" />
+    <Compile Include="Assets\Project\Scripts\Tools\MonoSingleton.cs" />
     <None Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Docs.txt" />
     <None Include="Assets\Project\Imported Packages\Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
     <None Include="Assets\Project\Imported Packages\Assets\PolygonZombies\Shaders\POLYGON_Zombies.shader" />
