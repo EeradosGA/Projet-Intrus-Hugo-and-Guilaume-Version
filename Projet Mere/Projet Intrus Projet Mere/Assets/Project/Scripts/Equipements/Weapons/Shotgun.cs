@@ -9,6 +9,12 @@ namespace ProjectIntrus.Equipements.Weapons
         int iLeadUsePerShoot = 25;
 
         [SerializeField]
+        GameObject particleShootingEffect;
+
+        [SerializeField]
+        List<ParticleSystem> listParticleShootingEffect;
+
+        [SerializeField]
         float spreadAngle = 0.3f;
         // Start is called before the first frame update
         void Start()
@@ -20,6 +26,17 @@ namespace ProjectIntrus.Equipements.Weapons
             iMunitionUse = 5;
             iCurrentMunition = iMagazineSize;
             isAutomatic = false;
+
+            listParticleShootingEffect = new List<ParticleSystem>();
+
+            for (int i = 0; i < iLeadUsePerShoot; i++)
+            {
+                listParticleShootingEffect.Add(Instantiate(particleShootingEffect).GetComponent<ParticleSystem>());
+                listParticleShootingEffect[i].transform.SetParent(this.transform);
+                listParticleShootingEffect[i].transform.position = shootingPosition.position;
+            }
+
+
         }
 
         public override void Shoot()
@@ -30,14 +47,17 @@ namespace ProjectIntrus.Equipements.Weapons
                 iCurrentMunition -= 1;
 
                 for (int i = 0; i < iLeadUsePerShoot; i++)
-                {
+                {                
                     Vector3 direction = Vector3.forward + new Vector3(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0);
 
                     Debug.Log(direction);
 
+                    listParticleShootingEffect[i].transform.eulerAngles = direction*100;
+                    listParticleShootingEffect[i].Play();
+
                     RaycastHit hit;
                     // Does the ray intersect any objects excluding the player layer
-                    if (Physics.Raycast(shootingPosition.position, direction, out hit, Mathf.Infinity, collideWith))
+                    if (Physics.Raycast(shootingPosition.position, direction, out hit, maxShootingDistance, collideWith))
                     {
                         if (hit.collider.GetComponent<ITakeDmg>() != null)
                             hit.collider.GetComponent<ITakeDmg>().TakeDmg(iDmgPerBullet);

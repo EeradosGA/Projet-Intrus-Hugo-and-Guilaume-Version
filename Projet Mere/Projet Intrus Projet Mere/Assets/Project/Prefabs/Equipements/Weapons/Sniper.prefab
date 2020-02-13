@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4913,6 +4913,7 @@ Transform:
   - {fileID: 2907456167503329242}
   - {fileID: 2902945623920842633}
   - {fileID: 3228042635884753710}
+  - {fileID: 2315241696115538847}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4978,7 +4979,8 @@ MonoBehaviour:
   weaponShoot: {fileID: 787029255}
   reloadingSound: {fileID: 787029257}
   loadEmptyShoot: {fileID: 787029256}
-  particleShooting: {fileID: 0}
+  particleMuzzle: {fileID: 6341156509938121953}
+  particleShooting: {fileID: 2315241696115538845}
   iDmgPerBullet: 0
   iMagazineSize: 0
   iCurrentMunition: 0
@@ -4991,6 +4993,7 @@ MonoBehaviour:
   shootingPosition: {fileID: 2902945623920842633}
   isAutomatic: 0
   isReloading: 0
+  maxShootingDistance: Infinity
 --- !u!54 &-6541347967456119179
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5611,3 +5614,109 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &2902945624749901718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2902148722787612356}
+    m_Modifications:
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0344
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9589
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965963, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965963, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: SubModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965963, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].emitter
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965963, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851965963, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 605788730851966006, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+        type: 3}
+      propertyPath: m_Name
+      value: shootingEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e33333bab3cce448b79a1ef1f66ede8, type: 3}
+--- !u!4 &2315241696115538847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 605788730851965961, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902945624749901718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2315241696115538845 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 605788730851965963, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902945624749901718}
+  m_PrefabAsset: {fileID: 0}

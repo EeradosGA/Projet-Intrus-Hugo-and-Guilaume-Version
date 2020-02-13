@@ -14,6 +14,10 @@ namespace ProjectIntrus.Equipements.Weapons
         protected AudioSource loadEmptyShoot;
 
         [SerializeField]
+        protected ParticleSystem particleMuzzle;
+
+
+        [SerializeField]
         protected ParticleSystem particleShooting;
 
         [SerializeField]
@@ -111,6 +115,11 @@ namespace ProjectIntrus.Equipements.Weapons
             }
         }
 
+        [SerializeField]
+        protected float maxShootingDistance;
+
+
+
 
         float timer = 0;
         int iMunitionToReload = 0;
@@ -145,12 +154,15 @@ namespace ProjectIntrus.Equipements.Weapons
         {
             if (iCurrentMunition > 0)
             {
+                
                 iCurrentMunition -= 1;
                 weaponShoot.Play();
+                particleMuzzle.Play();
                 particleShooting.Play();
+
                 RaycastHit hit;
                 // Does the ray intersect any objects excluding the player layer
-                if (Physics.Raycast(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, collideWith))
+                if (Physics.Raycast(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward), out hit, maxShootingDistance, collideWith))
                 {
                     if (hit.collider.GetComponent<ITakeDmg>() != null)
                         hit.collider.GetComponent<ITakeDmg>().TakeDmg(iDmgPerBullet);

@@ -52,6 +52,8 @@ namespace ProjetIntrus.Player
             ThrowWeapon();
             //Dose la competence de son kit en utilisant les fleches du pad de la manette
             DoseCompetence();
+            //Active ou desactive la lampe tactique
+            UseLight();
 
             //test vibration
             if (Input.GetKey(KeyCode.V))
@@ -101,7 +103,7 @@ namespace ProjetIntrus.Player
             if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
             {
                 Debug.Log("Player" + playerIndex + " Interact");
-                if (playerStats.WeaponStocker != null)
+                if(playerStats.WeaponStocker != null)
                 {
                     playerStats.PickUpWeapon(playerStats.WeaponStocker);
                 }
@@ -212,6 +214,16 @@ namespace ProjetIntrus.Player
             {
                 Debug.Log("Player" + playerIndex + " Left competence selected");
                 //faire l edosage de gauche
+            }
+        }
+
+        void UseLight()
+        {
+            // Detecte si le Bouton X a été préssé
+            if (prevState.Buttons.LeftStick == ButtonState.Released && state.Buttons.LeftStick == ButtonState.Pressed)
+            {
+                Debug.Log("Player" + playerIndex + " use light");
+                //faire le use light
             }
         }
     }

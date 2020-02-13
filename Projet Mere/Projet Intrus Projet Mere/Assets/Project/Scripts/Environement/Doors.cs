@@ -12,6 +12,8 @@ namespace ProjectIntrus.Environement
             ExitDoor,
         }
 
+        [SerializeField] bool needKit = false;
+
         private bool _isTrapped = false;
         public bool isTrapped { get { return _isTrapped; } }
 
@@ -72,12 +74,27 @@ namespace ProjectIntrus.Environement
         /// Unlock the door
         /// </summary>
         /// <returns></returns>
-        private bool UnlockDoor()
+        private bool UnlockDoor(bool haveKit = false)
         {
             if (_isLocked)
             {
-                _isLocked = false;
-                return true;
+                if (needKit && haveKit)
+                {
+                    _isLocked = false;
+                    return true;
+                }
+                else if (!needKit)
+                {
+                    if (_isLocked)
+                    {
+                        _isLocked = false;
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
             }
             else
                 return false;

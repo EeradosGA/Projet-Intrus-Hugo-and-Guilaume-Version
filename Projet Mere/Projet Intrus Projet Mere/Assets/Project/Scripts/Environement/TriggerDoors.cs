@@ -23,13 +23,14 @@ namespace ProjectIntrus.Environement
         // Start is called before the first frame update
         void Start()
         {
+            door = this.GetComponentInParent<Doors>();
+
             if (door._typeDoor == Doors.TypeDoor.ExitDoor)
                 canUse = false;
             else
                 canUse = true;
 
 
-            door = this.GetComponentInParent<Doors>();
         }
 
         // Update is called once per frame

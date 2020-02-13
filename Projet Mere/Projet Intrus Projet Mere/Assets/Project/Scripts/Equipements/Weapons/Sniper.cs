@@ -68,6 +68,8 @@ namespace ProjectIntrus.Equipements.Weapons
                 weaponShoot.Play();
                 iCurrentMunition -= 1;
                 tmpPositionShooting = shootingPosition;
+                particleShooting.transform.position = tmpPositionShooting.position;
+                particleShooting.Play();
                 numbberZombieCanBeStillPenetrated = iNumberZombieCanBePenetrate;
                 shootIsShooted = true;               
             }
@@ -85,8 +87,10 @@ namespace ProjectIntrus.Equipements.Weapons
             {
                 RaycastHit hit;
                 // Does the ray intersect any objects excluding the player layer
-                if (Physics.Raycast(tmpPositionShooting.position, tmpPositionShooting.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, collideWith))
+                if (Physics.Raycast(tmpPositionShooting.position, tmpPositionShooting.TransformDirection(Vector3.forward), out hit, maxShootingDistance, collideWith))
                 {
+                    
+
                     if (hit.collider.GetComponent<ITakeDmg>() != null)
                     {
                         hit.collider.GetComponent<ITakeDmg>().TakeDmg(iDmgPerBullet);

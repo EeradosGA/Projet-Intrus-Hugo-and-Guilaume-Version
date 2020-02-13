@@ -6,7 +6,6 @@ namespace ProjectIntrus.Equipements.Weapons
 {
     public class Gun : Weapons
     {
-        
         // Start is called before the first frame update
         void Start()
         {

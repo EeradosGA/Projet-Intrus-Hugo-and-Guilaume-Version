@@ -63,6 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraMultiTarget\Example\ExampleGameController.cs" />
+    <Compile Include="Assets\CameraMultiTarget\Library\CameraMultiTarget.cs" />
+    <Compile Include="Assets\CameraMultiTarget\Library\PositionAndRotation.cs" />
+    <Compile Include="Assets\CameraMultiTarget\Library\ProjectionHits.cs" />
     <Compile Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Examples\XInputTestCS.cs" />
     <Compile Include="Assets\Project\Scripts\Ennemis\EnumProject.cs" />
     <Compile Include="Assets\Project\Scripts\Ennemis\ITakeDamage.cs" />
@@ -76,6 +80,7 @@
     <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieSniper.cs" />
     <Compile Include="Assets\Project\Scripts\Environement\Doors.cs" />
     <Compile Include="Assets\Project\Scripts\Environement\IInteractable.cs" />
+    <Compile Include="Assets\Project\Scripts\Environement\LightBlink.cs" />
     <Compile Include="Assets\Project\Scripts\Environement\TriggerDoors.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\AmmoKit.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\AmmoStack.cs" />
@@ -107,6 +112,7 @@
     <Compile Include="Assets\Project\Scripts\Tools\IUsable.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\IUser.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\MonoSingleton.cs" />
+    <Compile Include="Assets\Starfield Skybox\Demo\Script\LookCamera.cs" />
     <Compile Include="Assets\door.cs" />
     <None Include="Assets\Low Poly Desert Starter Kit\Materials\Shaders\Vertex_Color_Basic.shader" />
     <None Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Docs.txt" />

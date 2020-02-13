@@ -104,6 +104,7 @@ MonoBehaviour:
   weaponShoot: {fileID: 662496313}
   reloadingSound: {fileID: 662496314}
   loadEmptyShoot: {fileID: 662496315}
+  particleMuzzle: {fileID: 803773575143708868}
   particleShooting: {fileID: 0}
   iDmgPerBullet: 0
   iMagazineSize: 0
@@ -117,7 +118,11 @@ MonoBehaviour:
   shootingPosition: {fileID: 1291682975541564755}
   isAutomatic: 0
   isReloading: 0
-  spreadAngle: 0.3
+  maxShootingDistance: Infinity
+  particleShootingEffect: {fileID: 605788730851966006, guid: 6e33333bab3cce448b79a1ef1f66ede8,
+    type: 3}
+  listParticleShootingEffect: []
+  spreadAngle: 0.2
 --- !u!54 &5090855331394020132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -737,7 +742,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

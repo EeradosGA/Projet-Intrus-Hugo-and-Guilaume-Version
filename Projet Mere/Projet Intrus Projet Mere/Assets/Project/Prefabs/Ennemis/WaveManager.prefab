@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa68ff98edd46604281eed817c455110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allWaves:
-  - {fileID: 0}
-  - {fileID: 0}
+  Level_1_Waves: []
+  Level_2_Waves: []
+  Level_3_Waves: []
   timeBetweenWaves: 5
