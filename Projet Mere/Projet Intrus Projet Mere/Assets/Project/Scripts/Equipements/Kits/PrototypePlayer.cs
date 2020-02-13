@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ProjectIntrus.Equipements.Kits
 {
-    public class PrototypePlayer : UserBehaviour, IDamageable
+    public class PrototypePlayer : UserBehaviour, ITakeDmg
     {
         public int _maxLife;
         public int _life;
@@ -14,6 +14,7 @@ namespace ProjectIntrus.Equipements.Kits
         [SerializeField] Kit kit;
         public bool _isDead;
         public int _ammo;
+        public Weapons.Weapons Weapon;
 
         // Start is called before the first frame update
         void Start()
@@ -23,7 +24,7 @@ namespace ProjectIntrus.Equipements.Kits
             {
                 Debug.Log("MediKit is null");
             }
-            kit = Instantiate(KitManager.Instance.Kits[0]).GetComponent<Kit>();
+            kit = Instantiate(KitManager.Instance.Kits[3]).GetComponent<Kit>();
             kit.transform.SetParent(this.transform);
             kit.transform.localPosition = kit.transform.localEulerAngles = Vector3.zero;
             kit.transform.localPosition += this.transform.forward;
@@ -68,11 +69,10 @@ namespace ProjectIntrus.Equipements.Kits
             }
         }
 
-        public void Damage(IDamager pDamager)
+        public void TakeDmg(float HowMany)
         {
-            if (pDamager != null)
             {
-                int power = Convert.ToInt32(pDamager.GetData().GetInfo().GetValue("Power"));
+                int power = (int)HowMany;
                 if (power < 0)
                 {
                     _life -= (int)(power * _healEfficiency);

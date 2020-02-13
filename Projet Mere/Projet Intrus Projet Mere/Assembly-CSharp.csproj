@@ -75,6 +75,8 @@
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\MedicKit.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\Projectile.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Kits\PrototypePlayer.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Kits\Turret.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Kits\TurretKit.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Gun.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Weapons\SMG.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Shotgun.cs" />

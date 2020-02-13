@@ -11,7 +11,7 @@ namespace ProjectIntrus.Equipements.Kits
         [SerializeField] public int Power;
     }
 
-    public class Projectile : ProjectIntrus.Tools.DynamicBehaviour, IDamager
+    public class Projectile : ProjectIntrus.Tools.DynamicBehaviour
     {
         [SerializeField] protected ProjectileData _data;
         [SerializeField] protected float _maxRange;
@@ -22,15 +22,6 @@ namespace ProjectIntrus.Equipements.Kits
         public int Power
         {
             get { return _data.Power; }
-        }
-            
-
-        public void Damage(IDamageable pDamageable)
-        {
-            if (pDamageable != null)
-            {
-                pDamageable.Damage(this);
-            }
         }
 
         public Data GetData()
@@ -59,7 +50,10 @@ namespace ProjectIntrus.Equipements.Kits
 
         private void OnTriggerEnter(Collider other)
         {
-            Damage(other.GetComponent<IDamageable>());
+            if (other.GetComponent<ITakeDmg>() != null)
+            {
+                other.GetComponent<ITakeDmg>().TakeDmg(Power);
+            }
             Destroy(this.gameObject);
         }
     }
