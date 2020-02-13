@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [SerializeField] List<PlayerController> playerList = null;
+    [SerializeField] List<GameObject> playerList = null;
 
     // Start is called before the first frame update
     void Start()

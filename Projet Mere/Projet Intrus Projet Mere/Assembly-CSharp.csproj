@@ -64,6 +64,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Examples\XInputTestCS.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\EnumProject.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\ITakeDamage.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\BulletZombie.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\CheckDestinationDefault.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieBoomer.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieCac.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieCharacter.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieDistance.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieShooter.cs" />
+    <Compile Include="Assets\Project\Scripts\Ennemis\Zombie\ZombieSniper.cs" />
     <Compile Include="Assets\Project\Scripts\Environement\Doors.cs" />
     <Compile Include="Assets\Project\Scripts\Environement\IInteractable.cs" />
     <Compile Include="Assets\Project\Scripts\Environement\TriggerDoors.cs" />

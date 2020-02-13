@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [SerializeField] List<PlayerController> playerList = null;
+    [SerializeField] private List<GameObject> playerList;
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public List<GameObject> getListPlayer()
+    {
+        return playerList;
     }
 
     // Update is called once per frame

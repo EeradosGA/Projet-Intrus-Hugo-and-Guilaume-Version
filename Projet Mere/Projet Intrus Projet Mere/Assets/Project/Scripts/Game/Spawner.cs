@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < objectToSpawn.Count; i++)
         {
             Debug.Log("Spawn Entities");
-            gameObjectToSpawn = Instantiate(objectToSpawn[i]);
+            gameObjectToSpawn = Instantiate(objectToSpawn[i], this.transform.position, this.transform.rotation, this.transform);
             yield return new WaitForSeconds(spawnFrequencyBetweenEachEntity);
         }
     }
