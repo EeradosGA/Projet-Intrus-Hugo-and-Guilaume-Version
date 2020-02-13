@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ProjectIntrus.Equipements.Weapons
 {
@@ -14,7 +12,6 @@ namespace ProjectIntrus.Equipements.Weapons
         bool shootIsShooted = false;
 
 
-        float timer = 0;
         int iMunitionToReload = 0;
 
 
@@ -29,6 +26,8 @@ namespace ProjectIntrus.Equipements.Weapons
             iCurrentMunition = iMagazineSize;
             isAutomatic = false;
             weaponShoot = this.GetComponent<AudioSource>();
+            timerDuringJammed = 8;
+            weaponType = WEAPON_TYPE.SNIPER;
         }
 
         private void Update()
@@ -52,6 +51,25 @@ namespace ProjectIntrus.Equipements.Weapons
                 {
                     iCurrentMunition += iMunitionToReload;
                     isReloading = false;
+                }
+            }
+
+            if (isJammed)
+            {
+                timerJammed += Time.deltaTime;
+                if (timerJammed > fReloadingTime)
+                {
+                    isJammed = false;
+                }
+            }
+
+            if (isSaboted)
+            {
+                timerIsSaboted += Time.deltaTime;
+                if (timerIsSaboted > timerDuringSabotage)
+                {
+                    isSaboted = false;
+                    timerIsSaboted = 0;
                 }
             }
 

@@ -1,11 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ProjectIntrus.Equipements.Weapons
 {
     public class Weapons : MonoBehaviour
     {
+        public enum WEAPON_TYPE
+        {
+            GUN = 0,
+            SMG,
+            SHOTGUN,
+            SNIPER
+        }
+
+        [SerializeField]
+        protected WEAPON_TYPE weaponType;
+        public WEAPON_TYPE WeaponType
+        {
+            get
+            {
+                return weaponType;
+            }
+        }
+
         [SerializeField]
         protected AudioSource weaponShoot;
         [SerializeField]
@@ -54,6 +70,19 @@ namespace ProjectIntrus.Equipements.Weapons
         }
 
         [SerializeField]
+        //To use the same munition Quantity, a weapon consume munition link to his state
+        protected int iMunitionUse;
+
+        //To use the same munition Quantity, a weapon consume munition link to his state
+        public int MunitionUse
+        {
+            get
+            {
+                return iMunitionUse;
+            }
+        }
+
+        [SerializeField]
         protected float fCooldownBetweenTwoBullets;
 
         public float CooldownBetweenTwoBullets
@@ -76,24 +105,19 @@ namespace ProjectIntrus.Equipements.Weapons
             }
         }
 
-        [SerializeField]
-        //To use the same munition Quantity, a weapon consume munition link to his state
-        protected int iMunitionUse;
 
-        //To use the same munition Quantity, a weapon consume munition link to his state
-        public int MunitionUse
-        {
-            get
-            {
-                return iMunitionUse;
-            }
-        }
+
+        [SerializeField]
+        protected float maxShootingDistance;
 
         [SerializeField]
         protected LayerMask collideWith;
-        
+
         [SerializeField]
         protected Transform shootingPosition;
+
+
+
 
         [SerializeField]
         protected bool isAutomatic;
@@ -115,13 +139,63 @@ namespace ProjectIntrus.Equipements.Weapons
             }
         }
 
+
         [SerializeField]
-        protected float maxShootingDistance;
+        //True is the weapon is Jammed
+        protected bool isJammed = false;
+        public bool IsJammed
+        {
+            get
+            {
+                return isJammed;
+            }
+        }
+
+        [SerializeField]
+        protected float pourcentageChanceJammed = 2;
+        public float PourcentageChanceJammed
+        {
+            get
+            {
+                return pourcentageChanceJammed;
+            }
+
+            set
+            {
+                pourcentageChanceJammed = value;
+            }
+        }
+
+        [SerializeField]
+        //True if the player received munition from the intruder
+        protected bool isSaboted = false;
+        public bool IsSaboted
+        {
+            get
+            {
+                return isSaboted;
+            }
+
+            set
+            {
+                isSaboted = value;
+            }
+        }
+
+        protected float timerJammed = 0;
+        protected float timerIsSaboted = 0;
 
 
+        [SerializeField]
+        protected float timerDuringJammed = 0;
 
+        [SerializeField]
+        protected float timerDuringSabotage = 30;
 
-        float timer = 0;
+        [SerializeField]
+        protected Light light;
+
+        protected float timer = 0;
         int iMunitionToReload = 0;
 
         // Update is called once per frame
@@ -139,13 +213,32 @@ namespace ProjectIntrus.Equipements.Weapons
                 Reloading(tmp);
             }
             /////////////////////////////////////
-            if(isReloading)
+            if (isReloading)
             {
                 timer += Time.deltaTime;
-                if(timer > fReloadingTime)
+                if (timer > fReloadingTime)
                 {
                     iCurrentMunition += iMunitionToReload;
                     isReloading = false;
+                }
+            }
+
+            if (isJammed)
+            {
+                timerJammed += Time.deltaTime;
+                if (timerJammed > fReloadingTime)
+                {
+                    isJammed = false;
+                }
+            }
+
+            if(isSaboted)
+            {
+                timerIsSaboted += Time.deltaTime;
+                if(timerIsSaboted > timerDuringSabotage)
+                {
+                    isSaboted = false;
+                    timerIsSaboted = 0;
                 }
             }
         }
@@ -154,26 +247,29 @@ namespace ProjectIntrus.Equipements.Weapons
         {
             if (iCurrentMunition > 0)
             {
-                
-                iCurrentMunition -= 1;
-                weaponShoot.Play();
-                particleMuzzle.Play();
-                particleShooting.Play();
+                CheckJammed();
+                if (!isJammed)
+                {                
+                    iCurrentMunition -= 1;
+                    weaponShoot.Play();
+                    particleMuzzle.Play();
+                    particleShooting.Play();
 
-                RaycastHit hit;
-                // Does the ray intersect any objects excluding the player layer
-                if (Physics.Raycast(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward), out hit, maxShootingDistance, collideWith))
-                {
-                    if (hit.collider.GetComponent<ITakeDmg>() != null)
-                        hit.collider.GetComponent<ITakeDmg>().TakeDmg(iDmgPerBullet);
+                    RaycastHit hit;
+                    // Does the ray intersect any objects excluding the player layer
+                    if (Physics.Raycast(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward), out hit, maxShootingDistance, collideWith))
+                    {
+                        if (hit.collider.GetComponent<ITakeDmg>() != null)
+                            hit.collider.GetComponent<ITakeDmg>().TakeDmg(iDmgPerBullet);
 
-                    Debug.DrawRay(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                    Debug.Log("Did Hit");
-                }
-                else
-                {
-                    Debug.DrawRay(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward) * 1000, Color.white);
-                    Debug.Log("Did not Hit");
+                        Debug.DrawRay(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                        Debug.Log("Did Hit");
+                    }
+                    else
+                    {
+                        Debug.DrawRay(shootingPosition.position, shootingPosition.TransformDirection(Vector3.forward) * 1000, Color.white);
+                        Debug.Log("Did not Hit");
+                    }
                 }
             }
             else
@@ -190,5 +286,42 @@ namespace ProjectIntrus.Equipements.Weapons
             isReloading = true;
         }
 
+
+        public virtual void CheckJammed()
+        {
+            if (!isJammed)
+            {
+                if (isSaboted)
+                {
+                    pourcentageChanceJammed = 5;
+                }
+                else
+                {
+                    pourcentageChanceJammed = 2;
+                }
+
+                int random = Random.Range(0, 100);
+
+                if (random >= 0 && random <= pourcentageChanceJammed)
+                {
+                    isJammed = true;
+                    loadEmptyShoot.Play();
+                    timerJammed = 0;
+                }
+                else
+                {
+                    isJammed = false;
+                }
+            }
+        }
+
+
+        public virtual void UseLight()
+        {
+            if (light.enabled)
+                light.enabled = false;
+            else
+                light.enabled = true;
+        }
     }
 }

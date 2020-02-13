@@ -97,6 +97,7 @@
     <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Shotgun.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Sniper.cs" />
     <Compile Include="Assets\Project\Scripts\Equipements\Weapons\Weapons.cs" />
+    <Compile Include="Assets\Project\Scripts\Equipements\Weapons\WeaponsManager.cs" />
     <Compile Include="Assets\Project\Scripts\Game\Spawner.cs" />
     <Compile Include="Assets\Project\Scripts\Game\Timer.cs" />
     <Compile Include="Assets\Project\Scripts\ITakeDmg.cs" />

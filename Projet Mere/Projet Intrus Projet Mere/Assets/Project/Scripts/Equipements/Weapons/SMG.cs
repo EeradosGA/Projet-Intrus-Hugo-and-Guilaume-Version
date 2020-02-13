@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace ProjectIntrus.Equipements.Weapons
+﻿namespace ProjectIntrus.Equipements.Weapons
 {
     public class SMG : Weapons
     {
-
         // Start is called before the first frame update
         void Start()
         {
@@ -17,7 +12,8 @@ namespace ProjectIntrus.Equipements.Weapons
             iMunitionUse = 1;
             iCurrentMunition = iMagazineSize;
             isAutomatic = true;
-            weaponShoot = this.GetComponent<AudioSource>();
+            timerDuringJammed = 6;
+            weaponType = WEAPON_TYPE.SMG;
         }
     }
 }

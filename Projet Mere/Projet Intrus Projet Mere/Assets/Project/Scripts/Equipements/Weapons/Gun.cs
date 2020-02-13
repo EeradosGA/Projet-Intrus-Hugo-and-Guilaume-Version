@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace ProjectIntrus.Equipements.Weapons
+﻿namespace ProjectIntrus.Equipements.Weapons
 {
     public class Gun : Weapons
     {
@@ -16,6 +12,9 @@ namespace ProjectIntrus.Equipements.Weapons
             iMunitionUse = 1;
             iCurrentMunition = iMagazineSize;
             isAutomatic = false;
+            timerDuringJammed = 4;
+            weaponType = WEAPON_TYPE.GUN;
         }
+
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectIntrus.Equipements.Weapons
@@ -36,6 +35,9 @@ namespace ProjectIntrus.Equipements.Weapons
                 listParticleShootingEffect[i].transform.position = shootingPosition.position;
             }
 
+            timerDuringJammed = 8;
+
+            weaponType = WEAPON_TYPE.SHOTGUN;
 
         }
 
