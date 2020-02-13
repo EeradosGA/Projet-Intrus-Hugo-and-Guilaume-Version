@@ -36,11 +36,15 @@ public class CheckDestinationDefault : MonoSingleton<CheckDestinationDefault>
         listGameObject = new List<GameObject>();
         if(GameManager.Instance != null)
         {
+            Debug.Log("Game manager ");
             if (GameManager.Instance.getListPlayer() != null)
             {
+                Debug.Log("Player list ");
+
                 for (int i = 0; i < GameManager.Instance.getListPlayer().Count; i++)
                 {
                     listGameObject.Add(GameManager.Instance.getListPlayer()[i]);
+                    Debug.Log("Adding player to the list");
                 }
             }
         }
@@ -64,15 +68,15 @@ public class CheckDestinationDefault : MonoSingleton<CheckDestinationDefault>
 
             if (circle == null)
             {
-                circle = Instantiate(prefabCircle, pos, new Quaternion());
-                circle_2 = Instantiate(prefabCircle, pos, new Quaternion());
+                //circle = Instantiate(prefabCircle, pos, new Quaternion());
+                //circle_2 = Instantiate(prefabCircle, pos, new Quaternion());
             }
 
-            circle.transform.position = pos;
-            circle.transform.localScale = new Vector3(maxDistance, maxDistance, maxDistance);
+            //circle.transform.position = pos;
+            //circle.transform.localScale = new Vector3(maxDistance, maxDistance, maxDistance);
 
-            circle_2.transform.position = pos;
-            circle_2.transform.localScale = new Vector3(maxDistance + 30f, maxDistance + 30f, maxDistance + 30f);
+            //circle_2.transform.position = pos;
+            //circle_2.transform.localScale = new Vector3(maxDistance + 30f, maxDistance + 30f, maxDistance + 30f);
 
             Debug.DrawLine(listGameObject[indexMax1].transform.position, listGameObject[indexMax2].transform.position, Color.green);
         }

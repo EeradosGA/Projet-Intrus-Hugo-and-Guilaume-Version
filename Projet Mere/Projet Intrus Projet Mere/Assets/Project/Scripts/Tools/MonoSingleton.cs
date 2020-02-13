@@ -27,6 +27,7 @@ namespace ProjectIntrus.Tools
             {
                 if (instance == null)
                 {
+                    instance = FindObjectOfType<T>();
                     if (instance == null)
                     {
                         GameObject singleton = new GameObject();

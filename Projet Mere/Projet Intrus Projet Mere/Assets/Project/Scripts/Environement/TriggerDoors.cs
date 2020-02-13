@@ -9,17 +9,26 @@ namespace ProjectIntrus.Environement
     public class TriggerDoors : MonoBehaviour, IInteractable
     {
         public bool isActivated { get; set; }
+        public bool canUse { get; set; }
+
 
         private Doors door;
 
         public void Action()
         {
-            door.Action();
+            if (canUse)
+                door.Action();
         }
 
         // Start is called before the first frame update
         void Start()
         {
+            if (door._typeDoor == Doors.TypeDoor.ExitDoor)
+                canUse = false;
+            else
+                canUse = true;
+
+
             door = this.GetComponentInParent<Doors>();
         }
 
@@ -27,6 +36,11 @@ namespace ProjectIntrus.Environement
         void Update()
         {
 
+        }
+
+        void IInteractable.ChangeUse(bool pCanUse)
+        {
+            canUse = pCanUse;
         }
     }
 

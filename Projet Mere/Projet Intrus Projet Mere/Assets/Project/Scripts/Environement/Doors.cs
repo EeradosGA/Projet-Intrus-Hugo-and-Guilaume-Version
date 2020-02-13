@@ -6,6 +6,11 @@ namespace ProjectIntrus.Environement
 {
     public class Doors : MonoBehaviour
     {
+        public enum TypeDoor
+        {
+            InternDoor,
+            ExitDoor,
+        }
 
         private bool _isTrapped = false;
         public bool isTrapped { get { return _isTrapped; } }
@@ -27,6 +32,8 @@ namespace ProjectIntrus.Environement
         private Quaternion _doorDestination;
         private Quaternion _doorStart;
 
+        [SerializeField] private TypeDoor typeDoor = TypeDoor.InternDoor;
+        public TypeDoor _typeDoor { get { return typeDoor; } }
 
         // Start is called before the first frame update
         void Start()
@@ -104,7 +111,6 @@ namespace ProjectIntrus.Environement
             }
             else return false;
         }
-
 
     }
 }

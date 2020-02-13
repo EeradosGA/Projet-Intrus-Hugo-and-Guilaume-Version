@@ -108,6 +108,7 @@
     <Compile Include="Assets\Project\Scripts\Tools\IUser.cs" />
     <Compile Include="Assets\Project\Scripts\Tools\MonoSingleton.cs" />
     <Compile Include="Assets\door.cs" />
+    <None Include="Assets\Low Poly Desert Starter Kit\Materials\Shaders\Vertex_Color_Basic.shader" />
     <None Include="Assets\Project\Imported Packages\Tools\XInputDotNet\Docs.txt" />
     <None Include="Assets\Project\Imported Packages\Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
     <None Include="Assets\Project\Imported Packages\Assets\PolygonZombies\Shaders\POLYGON_Zombies.shader" />
